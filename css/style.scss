@@ -15,6 +15,7 @@ $stack-overflow: #c98b3b;
 $instagram:      #cd486b;
 $reddit:         #cee3f8;
 $rss:            #eea33a;
+$medium-blog:	 #292929;
 
 $darker:         #21211E;
 $dark:           #2D2D29;
@@ -182,6 +183,10 @@ ul {
 
 	.fa-twitter:hover {
 		color: $twitter;
+	}
+
+	.fa-medium:hover {
+		color: $medium-blog;
 	}
 
 	.fa-linkedin:hover {

@@ -1,23 +1,17 @@
 # Site settings
 title: "Tamás Losonczi's personal site"
-# email: jacob@jacobtomlinson.co.uk
-description: "A dark blog theme for Jekyll."
-baseurl: ""
-# url: "http://carte-noire.jacobtomlinson.co.uk/"
+description: "Personal site for sharing knowledge."
 title_description: "I’m a Software Engineer from Budapest with several years of experience in mobile app development."
 title_image: "./images/avatar.jpg"
 # google_analytics: "UA-20365477-4"
 # disqus_account: cartenoire
-# github_repository: https://github.com/jacobtomlinson/carte-noire
 # addthis_id: ra-513c6fa83da6ec67
 post_limit: 5
 
 # Social usernames/URLs
 # twitter_username: _jacobtomlinson
 github_username: LosoncziTamas
-# instagram_username: 
-# reddit_username: 
-
+medium_link: https://medium.com/@losonczi.tamas91
 linkedin_link: https://www.linkedin.com/in/tam%C3%A1s-losonczi-77b13699/
 # google_plus_link: http://carte-noire.jacobtomlinson.co.uk/
 # stackoverflow_link: http://carte-noire.jacobtomlinson.co.uk/
