@@ -15,7 +15,7 @@ $stack-overflow: #c98b3b;
 $instagram:      #cd486b;
 $reddit:         #cee3f8;
 $rss:            #eea33a;
-$medium-blog:	 #292929;
+//TODO: fix $medium-blog:	 #292929;
 
 $darker:         #141414;
 $dark:           #2D2D29;
@@ -181,9 +181,9 @@ ul {
 		color: $twitter;
 	}
 
-	.fa-medium:hover {
-		color: $medium-blog;
-	}
+	// .fa-medium-blog:hover {
+	// 	color: $medium-blog;
+	// }
 
 	.fa-linkedin:hover {
 		color: $linkedin;
