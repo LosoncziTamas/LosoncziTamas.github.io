@@ -3,27 +3,29 @@ layout: page
 title: Projects
 ---
 
-## Professional projects
+### Professional projects
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra metus sed nibh feugiat faucibus.
-
+- [PGA Tour AR](https://apps.apple.com/us/app/pga-tour-ar/id1349934082): iOS application for PGA fans. Developed in Unity3D with usage of ARKit. 
+- [IKEA Toy Box](https://www.thedrum.com/news/2018/06/20/ikea-finds-practical-use-its-cardboard-box-waste-helping-kids-create-toys) App prototype developed for IKEA to motivate to reuse cardboard boxes creatively. 
+Developed in Unity3D with the usage of CoreML, Vision framework, and ARKit.
+  
 ---
 
-## Personal projects
+### Personal projects
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra metus sed nibh feugiat faucibus. Curabitur felis orci, auctor at interdum ut, posuere in est. Phasellus posuere ipsum risus, sed rutrum mi consectetur at.
+Below you can find a list of projects I did in my free time.
 
-### Programming
+#### Programming
 
-- Lorem ipsum dolor sit amet, 
-- faucibus. Curabitur felis orci
-- risus, sed rutrum mi consectetur at.
+- [3DFileConverter](https://github.com/LosoncziTamas/3DFileConverter): .obj to .stl converter written in C#.
+- [BitmapLoader](https://github.com/LosoncziTamas/c-playground/tree/master/misc/bitmap) A rudimentary bitmap loader written in C. I also wrote an article featuring this project [here](../c/2019/10/07/bitmap-loading/).
+- [K&R Solutions](https://github.com/LosoncziTamas/c-playground/tree/master/KR) Solutions for (some of) the exercises of the classic K&R: The C programming language book.  
 
-### Music
+#### Music
 
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit
-- faucibus. Curabitur felis orci, auctor at
-- risus, sed rutrum mi consectetur at
+Besides coding and being a nerd, I love to express myself through music. Here are several musical acts I'm currently or was involved with.
 
-
-
+- [Iron Steel](https://ironsteel.bandcamp.com/releases) (speed metal) - guitar & vocals
+- [Diskobra](https://www.youtube.com/watch?v=7OBQE5b1oN0) (d-beat) - bass
+- [Karak](https://www.youtube.com/watch?v=jYs5nR83o9c) (powerviolence) - guitar 
+- [Halitosis](https://www.youtube.com/watch?v=9USYMql62L4&t=59s) (goregrind) - guitar

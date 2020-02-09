@@ -1,7 +1,7 @@
 # Site settings
 title: "Tamás Losonczi's personal site"
 description: "Personal site for sharing knowledge."
-title_description: "I’m a Software Engineer from Budapest with several years of experience in mobile app development."
+title_description: "I’m a programmer from Budapest with a wide range of interest. See my projects <a href=\"../projects\">here</a>."
 title_image: "./images/avatar.jpg"
 # google_analytics: "UA-20365477-4"
 # disqus_account: cartenoire
