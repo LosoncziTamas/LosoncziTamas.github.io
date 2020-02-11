@@ -111,7 +111,7 @@ This is just a fragment from the BMP reading code where we `fseek()` to repositi
 
 In order to test the program I used an image in which the color values are quite unambiguous (pure red, green, blue and white).
 
-<img src="../images/bitmap-loading/bitmap_test.bmp" width="10" height="10">
+<img src="../../../../../images/bitmap-loading/bitmap_test.bmp" width="50" height="50">
 
 For this image the program outputs the lines below:
 
