@@ -10,6 +10,7 @@ $github:         #f6c2a4;
 $rss:            #eea33a;
 $medium-blog:	 #292929;
 
+$table-border:   #3B3B35;
 $darker:         #141414;
 $dark:           #2D2D29;
 $medium:         #3B3B35;
@@ -852,16 +853,16 @@ ul {
 table{
     margin: 0 auto;
     border-collapse: collapse;
-    border-spacing: 0;
-    border:2px solid $darker;;
+	border-spacing: 0;
+    border:2px solid $table-border;
 }
 
 th{
     padding: 2px;
-    border:2px solid $darker;;
+    border:2px solid $table-border;
 }
 
 td{
     padding: 2px;
-    border:1px solid $dark-brown;;
+    border:1px solid $table-border;
 }
