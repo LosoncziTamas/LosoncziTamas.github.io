@@ -11,27 +11,29 @@ tags:
  - cheatsheet
 ---
 
-__Scenario 1:__ Move `objectA` around `objectB`
+__Scenario 1:__ Move an object around `gameObjectB` along the Y axis.
 
 ```
-    public class MoveAround : MonoBehaviour
+public class MoveAround : MonoBehaviour
+{
+    public GameObject gameObjectB;
+    
+    public float distance;
+
+    private void Start()
     {
-        public GameObject gameObjectB;
-        
-        private Vector3 _offset;
-
-        private void Start()
-        {
-            // Offset between two objects
-            _offset = gameObjectB.transform.position - transform.position;
-        }
-
-        private void Update()
-        {
-            var translation = new Vector3();
-            transform.Translate(translation);
-        }
+        Debug.Assert(distance > 0.0f, "Incorrect distance value.");
     }
+
+    private void Update()
+    {
+        var bPos = gameObjectB.transform.position;
+        var x = bPos.x + Mathf.Sin(Time.time) * distance;
+        var y = bPos.y;
+        var z = bPos.z + Mathf.Cos(Time.time) * distance;
+        transform.position = new Vector3(x, y, z);
+    }
+}
 ```
 
 __Scenario 2:__ Rotate `objectA` around itself
