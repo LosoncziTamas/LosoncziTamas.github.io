@@ -1,34 +1,22 @@
 ---
 ---
-/* Piperita - Theme */
-/* by Jacob Tomlinson () */
 
 /* Colours */
 $base-white:      #D0AE84;
-$base-red:        #FF0028;
-$light-black:     #737373;
-$light-red:       #FFA8BA;
-$dark-red:        #FF6685;
-$light-green:     #C5EBC5;
-$dark-green:      #A6EBA6;
-$light-yellow:    #F9F9A5;
-$dark-yellow:     #FFDC72;
-$light-blue:      #8DDBFF;
-$dark-blue:       #5DC6F5;
-$light-purple:    #FFABFF;
-$dark-purple:     #DBA51B;
-$light-aqua:      #B0F0F0;
+$dark-green:      #6B8E24;
+$light-yellow:    #FFDC72;
+$light-beige:     #E0CFB9;
+$dark-beige:      #D6C3AF;
+$orange:          #DBA51B;
+
+$light-green:     #A6EBA6;
 $dark-aqua:       #86D1D7;
-$light-white:     #FFFFFF;
-$dark-white:      #DBDBDB;
 
 
-/* Piperita Dark Title */
 .hljs-title {
-  color: $dark-white;
+  color: $light-beige;
 }
 
-/* Piperita Dark Green */
 .hljs-variable,
 .hljs-attribute,
 .hljs-tag,
@@ -41,10 +29,9 @@ $dark-white:      #DBDBDB;
 .css .hljs-id,
 .css .hljs-class,
 .css .hljs-pseudo {
-  color: $dark-green;
+  color: $light-green;
 }
 
-/* Piperita Dark Orange */
 .hljs-number,
 .hljs-preprocessor,
 .hljs-pragma,
@@ -52,31 +39,27 @@ $dark-white:      #DBDBDB;
 .hljs-literal,
 .hljs-params,
 .hljs-constant {
-  color: #D6C3AF;
+  color: $dark-beige;
 }
 
-/* Piperita Dark Yellow */
 .hljs-ruby .hljs-class .hljs-title,
 .css .hljs-rules .hljs-attribute {
-  color: $dark-yellow;
+  color: $light-yellow;
 }
 
-/* Piperita Dark Red */
 .hljs-string,
 .hljs-value,
 .hljs-inheritance,
 .hljs-header,
 .ruby .hljs-symbol,
 .xml .hljs-cdata {
-  color: $dark-red;
+  color: $dark-green;
 }
 
-/* Piperita Dark Aqua */
 .css .hljs-hexcolor {
   color: $dark-aqua;
 }
 
-/* Piperita Dark Blue */
 .hljs-function,
 .hljs-comment,
 .python .hljs-decorator,
@@ -86,13 +69,12 @@ $dark-white:      #DBDBDB;
 .perl .hljs-sub,
 .javascript .hljs-title,
 .coffeescript .hljs-title {
-  color: $dark-blue;
+  color: $light-beige;
 }
 
-/* Piperita Dark Purple */
 .hljs-keyword,
 .javascript .hljs-function {
-  color: $dark-purple;
+  color: $orange;
 }
 
 .hljs {
