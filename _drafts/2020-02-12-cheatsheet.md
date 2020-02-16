@@ -11,34 +11,70 @@ tags:
  - cheatsheet
 ---
 
-__Scenario 1:__ Move an object around `gameObjectB` along the Y axis.
+__Scenario 1:__ Move an object around `target` along the target's _up_ axis.
 
 ```
-public class MoveAround : MonoBehaviour
-{
-    public GameObject gameObjectB;
-    
-    public float distance;
-
-    private void Start()
+    public class MoveAround : MonoBehaviour
     {
-        Debug.Assert(distance > 0.0f, "Incorrect distance value.");
-    }
+        public GameObject target;
+        
+        public float distance;
+        public float speed;
 
-    private void Update()
+        private void Start()
+        {
+            Debug.Assert(target, "Target is not set in the inspector.");
+            Debug.Assert(distance > 0.0f, "Incorrect distance value.");
+            Debug.Assert(speed > 0.0f, "Incorrect speed value.");
+        }
+
+        private void Update()
+        {
+            var targetTrans = target.transform;
+            // Calculating the offset.
+            var x = Mathf.Sin(Time.time * speed) * distance;
+            var z = Mathf.Cos(Time.time * speed) * distance;
+            // Transforming from the target's local to the world space.
+            // So it's orientation is taken into account.
+            transform.position = targetTrans.TransformVector(
+                targetTrans.position + new Vector3(x, 0.0f, z)
+            );
+        }
+    }
+```
+
+__Scenario 2:__ Moving an object linearly from `start` to `end` over `targetTimeInSeconds`.
+
+```
+    public class MoveFromStartToEnd : MonoBehaviour
     {
-        var bPos = gameObjectB.transform.position;
-        var x = bPos.x + Mathf.Sin(Time.time) * distance;
-        var y = bPos.y;
-        var z = bPos.z + Mathf.Cos(Time.time) * distance;
-        transform.position = new Vector3(x, y, z);
+        public Transform start;
+        public Transform end;
+        
+        public float targetTimeInSeconds;
+        
+        private float _timeElapsed;
+
+        private void Start()
+        {
+            Debug.Assert(targetTimeInSeconds > 0.0f, "Target time is not positive.");
+            _timeElapsed = 0.0f;
+        }
+
+        private void Update()
+        {
+            if (_timeElapsed >= targetTimeInSeconds)
+            {
+                _timeElapsed = 0.0f;
+            }
+            _timeElapsed += Time.deltaTime;
+            transform.transform.position = Vector3.Lerp(
+                start.position, 
+                end.position, 
+                _timeElapsed / targetTimeInSeconds
+            );
+        }
     }
-}
-```
-
-__Scenario 2:__ Rotate `objectA` around itself
-
-```
 
 ```
 
