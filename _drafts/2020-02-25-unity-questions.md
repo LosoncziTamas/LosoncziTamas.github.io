@@ -72,7 +72,7 @@ __Q__: Which is the least processor-intensive primitive collider?
 __A__: Sphere collider
 
 __Q__: What is the bare minimum requirement in terms of attached unity components and settings to initiate an `OnTriggerEnter()` callback?   
-__A__: An active game object with an enabled Collider where isTrigger set,  and another active game object with a (kinematic or non-kinematic) Rigidbody component.
+__A__: An active game object with an enabled Collider where isTrigger set, and another active game object with a (kinematic or non-kinematic) Rigidbody component.
 
 __Q__: What is the bare minimum requirement in terms of attached unity components and settings to initiate an `OnCollisionEnter()` callback?   
 __A__: An active game object with a non-kinematic Rigidbody and an enabled Collider component, and another active game object with an enabled Collider component.
