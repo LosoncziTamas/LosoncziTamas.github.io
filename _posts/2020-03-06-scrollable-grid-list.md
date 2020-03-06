@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      Implementing a level selector grid
-date:       2020-02-17
+title:      Implementing a scrollable grid list in Unity
+date:       2020-03-06
 author:     Tamás Losonczi
 categories: Unity3D
 tags:
@@ -9,14 +9,10 @@ tags:
  - ui
 ---
 
-# Implementing a scrollable grid
-
 ## First attempt
 
-In order to implement a bare scrollable grid all you need is a `ScrollView` UI element where the content has a `ContentSizeFitter` and a `GridLayoutGroup` component. 
-Since I wanted to replicate a level selector which only scrolls vertically, I set the _Vertical Fit_ parameter to _Min Size_ and disabled the horizontal property of the `ScrollRect`. This makes the content expand according to the number of elements while it is only scrollable in one direction.
-
-_image_
+In order to implement a bare scrollable grid all you need is a `Scroll View` UI element where the content has a `Content Size Fitter` and a `Grid Layout Group` component. 
+Since I wanted to replicate a level selector that only scrolls vertically, I set the _Vertical Fit_ parameter to _Min Size_ and disabled the horizontal property of the `Scroll Rect`. This makes the content expand according to the number of elements while it is only scrollable in one direction.
 
 There are two custom scripts: `LevelSelectorItem` and `LevelSelector`. `LevelSelectorItem` holds references to UI elements and fills them with the proper values. To be able to instantiate items on the fly, we'll also need to create a prefab for the LevelSelectorItem. The prefab consists of a Text, a Button, an Image component and our `LevelSelectorItem` script.
 
@@ -51,7 +47,7 @@ There are two custom scripts: `LevelSelectorItem` and `LevelSelector`. `LevelSel
     }
 ```
 
-`LevelSelector` maintains a list of `ItemData` and instantiantes/destroys objects.
+`LevelSelector` maintains a list of `ItemData` and instantiates/destroys objects. Here `_content` is a reference to the content game object which comes with the Scroll View.
 
 ```
     public class LevelSelector : MonoBehaviour
@@ -98,20 +94,20 @@ There are two custom scripts: `LevelSelectorItem` and `LevelSelector`. `LevelSel
     }
 ```
 
-In some cases this minimal setup is perfectly fine, for example when you are making a prototype or you know that the number of items will be relatively small and you won't make changes frequently in the data set. Still, it has several pain points.
+In some cases, this minimal setup is perfectly fine, for example when you are making a prototype or you know that the number of items will be relatively small and you won't make changes frequently in the data set. Still, it has several pain points.
 
 ## Potential pitfalls & issues
-- Removal of items is error-prone and not performant.
+- The removal of items is error-prone and not performant.
   - Consider a situation where you may want to clear the list first, and then add new items to the grid. Since `Destroy()` is not called instantaneously but after the current update loop has finished, the newly added items will be destroyed as well.
-- Large number of items are not handled efficently.
+- A large number of items are not handled efficiently.
   - Items are destroyed and created each time the data set changes. 
 - Harder to identify which item gets selected (one string field may not be sufficient to differentiate an item from the rest).
   - You can remedy this by adding a field to the `ItemData` which uniquely identifies it in the collection like an ID or a reference.
 - Wrong item can get selected in the grid.
-  - This can happen when the child is taking more size then specified cell size in the `Grid Layout Group`. 
+  - This can happen when the child is taking more size than specified cell size in the `Grid Layout Group`. 
 
 ## Second attempt
-To tackle the unneccesary creation and destroyal of objects we use a pool which buffers and returns object on demand.
+To tackle the unnecessary creation and destruction of objects we use a pool which buffers and returns object on demand.
 
 ```
     public class LevelSelectorPool : MonoBehaviour
@@ -156,7 +152,7 @@ To tackle the unneccesary creation and destroyal of objects we use a pool which 
     }
 ```
 
-Additionally, we update the `LevelSelector` to use the pool. The pool has to be added to the hierarchyto be available to the `LevelSelector`. We'll also make sure to set the scale explicty because parenting and unparenting can mess up the size of the child.
+Additionally, we update the `LevelSelector` to use the pool. The pool has to be exposed to the `LevelSelector` in the hierarchy. We'll also make sure to set the scale explicitly because parenting and unparenting can mess up the size of the child.
 
 ```
     public class LevelSelector : MonoBehaviour
@@ -213,4 +209,4 @@ Additionally, we update the `LevelSelector` to use the pool. The pool has to be 
     }
 ```
 
-Although, this version is still not perfect or super performant, it works well under normal circumstances and can be easily customized to your needs.
+Although this version is still not perfect or super performant, it works well under normal circumstances and can be easily customized to your needs.
