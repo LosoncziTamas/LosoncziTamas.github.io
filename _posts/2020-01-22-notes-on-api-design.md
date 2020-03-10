@@ -4,7 +4,7 @@ title:      Notes on API design
 date:       2020-01-22
 author:     Tamás Losonczi
 summary:    Notes on API design
-categories: API design, notes
+categories: API design notes
 tags:
  - REST
  - HATEOAS
