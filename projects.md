@@ -14,17 +14,6 @@ title: Projects
 
 Below you can find a list of projects I did in my free time.
 
-#### Programming
-
 - [3DFileConverter](https://github.com/LosoncziTamas/3DFileConverter): .obj to .stl converter written in C#.
 - [BitmapLoader](https://github.com/LosoncziTamas/c-playground/tree/master/misc/bitmap) A rudimentary bitmap loader written in C. I also wrote an article featuring this project [here](../c/2019/10/07/bitmap-loading/).
-- [K&R Solutions](https://github.com/LosoncziTamas/c-playground/tree/master/KR) Solutions for (some of) the exercises of the classic K&R: The C programming language book.  
-
-#### Music
-
-Besides coding and being a nerd, I love to express myself through music. Here are several musical acts I'm currently or was involved with.
-
-- [Iron Steel](https://ironsteel.bandcamp.com/releases) (speed metal) - guitar & vocals
-- [Diskobra](https://www.youtube.com/watch?v=7OBQE5b1oN0) (d-beat) - bass
-- [Karak](https://www.youtube.com/watch?v=jYs5nR83o9c) (powerviolence) - guitar 
-- [Halitosis](https://www.youtube.com/watch?v=9USYMql62L4&t=59s) (goregrind) - guitar
+- [K&R Solutions](https://github.com/LosoncziTamas/c-playground/tree/master/KR) Solutions for (some of) the exercises of the classic K&R: The C programming language book.

@@ -1,26 +1,20 @@
 # Site settings
 title: "Tamás Losonczi's personal site"
 description: "Personal site for sharing knowledge."
-title_description: "I’m a programmer from Budapest with a wide range of interest. See my projects <a href=\"../projects\">here</a>."
+title_description: "I’m a programmer from Budapest. See my projects <a href=\"../projects\">here</a>."
 title_image: "./images/avatar.jpg"
 # google_analytics: "UA-20365477-4"
 # disqus_account: cartenoire
-# addthis_id: ra-513c6fa83da6ec67
 post_limit: 5
 
 # Social usernames/URLs
-# twitter_username: _jacobtomlinson
 github_username: LosoncziTamas
 medium_link: https://medium.com/@losonczi.tamas91
 linkedin_link: https://www.linkedin.com/in/tam%C3%A1s-losonczi-77b13699/
-# google_plus_link: http://carte-noire.jacobtomlinson.co.uk/
-# stackoverflow_link: http://carte-noire.jacobtomlinson.co.uk/
-# xing_link:
-# facebook_link:
 
 # Footer
-# footer_left: "Made with <i class=\"fa fa-heart\"></i> by <a href=\"https://twitter.com/_JacobTomlinson\">Jacob Tomlinson</a>"
-# footer_right: "&lt;/&gt; on <a href=\"https://github.com/jacobtomlinson/carte-noire\">Github</a> &nbsp;<i class=\"fa fa-github-alt\"></i>"
+# footer_left: "Made with <i class=\"fa fa-heart\"></i> by"
+# footer_right: "&lt;/&gt; on Github &nbsp;<i class=\"fa fa-github-alt\"></i>"
 
 # Build settings
 markdown: kramdown
@@ -31,3 +25,7 @@ kramdown:
 
 permalink: pretty
 exclude: [vendor]
+
+# Plugins
+gems:
+  - jekyll-seo-tag
