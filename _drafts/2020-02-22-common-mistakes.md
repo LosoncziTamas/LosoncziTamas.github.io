@@ -68,4 +68,69 @@ __This does__
     transform.position = new Vector3(currPos.x + _direction.x * _speed, currPos.y + _direction.y * _speed, currPos.z)–
 ```
 
+### Failing to unsubscribe from an event
 
+This could easily cause leaks and `MissingReferenceException` in your app. Until you unsubscribe from an event, the delegate underlying the event in the publishing object has a reference to the subscriber's event handler. Hence preventing the GC to delete the subscriber object. 
+
+Let's consider a case where you use a static event handler that is triggered when something happens that affects the app globally (ex.: losing life). Here is the publisher code:
+```
+    public class AppController : MonoBehaviour
+    {
+        public static event EventHandler<AppState> AppStateChangeEvent;
+
+        public class AppState : EventArgs
+        {
+            public readonly int LifeCount;
+
+            public AppState(int lifeCount)
+            {
+                LifeCount = lifeCount;
+            }
+        }
+
+        private int _lifeCount;
+
+        private void PublishAppStateChangeEvent()
+        {
+            AppStateChangeEvent?.Invoke(this, new AppState(_lifeCount));
+        }
+
+        // The rest are omitted for clarity
+    }
+```
+And here is the code for a subscriber:
+```
+    public class LifeCounterUI : MonoBehaviour
+    {
+        private void Start()
+        {
+            AppController.AppStateChangeEvent += OnAppStateChanged;
+        }
+
+        private void OnAppStateChanged(object sender, AppController.AppState args)
+        {
+            // Do something with args
+        }
+    }
+```
+When `LifeCounterUI` is no longer active or even the corresponding game object is destroyed (because of a scene load for example), the `AppStateChangeEvent` event handler still stores a reference to it and will keep notifying it. A correct way would be to subscribe/unsubscribe in the appropriate event function (ex.: OnEnable()/OnDisable() or Awake()/OnDestroy()).
+
+```
+    public class LifeCounterUI : MonoBehaviour
+    {
+        private void OnEnable()
+        {
+            AppController.AppStateChangeEvent += OnAppStateChanged;
+        }
+
+        private void OnDisable()
+        {
+            AppController.AppStateChangeEvent -= OnAppStateChanged;
+        }
+
+        private void OnAppStateChanged(object sender, AppController.AppState args)
+        {
+            // Do something with args
+        }
+    }
+```
