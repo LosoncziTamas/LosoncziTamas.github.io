@@ -50,6 +50,15 @@ In this case the foreach loop is a proper alternative.
     }
 ```
 
+### Initializing states at inproper events functions.
+
+
+### Destroying a script component instead of the game object.
+
+
+### Querying components on inactive game objects with GetComponentInChildern.
+
+
 ### Modifying the game object's position direcly
 
 You cannot modify the position of the GameObject directly (by calling transform.position), you'll either have to use the Translate method on the Transform or assign/set a new vector to transform.position.
@@ -65,7 +74,7 @@ __This doesn't work__
 __This does__
 ```
     var currPos = transform.position;
-    transform.position = new Vector3(currPos.x + _direction.x * _speed, currPos.y + _direction.y * _speed, currPos.z)–
+    transform.position = new Vector3(currPos.x + _direction.x * _speed, currPos.y + _direction.y * _speed, currPos.z);
 ```
 
 ### Failing to unsubscribe from an event
