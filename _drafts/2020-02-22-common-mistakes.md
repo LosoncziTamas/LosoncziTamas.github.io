@@ -9,19 +9,16 @@ tags:
  - ui
 ---
 
-### Using a for loop to unparent child game objects
-
-__Can you spot the cause?__
+__Using a foreach loop to unparent child game objects__  
+_Faulty version_
 ```
     foreach (Transform child in _content.transform)
     {             
         _pool.ReturnItem(child.GetComponent<LevelSelectorItem>());
     }
 ```
-
-The cause of the problem is the `_pool.ReturnItem()` call, which unparents the child object internally.
-
-__Corrected version__
+Here `_pool.ReturnItem()` internally invokes a `SetParent` to change the parent transform. On each iteration, the value of the parent `childCount` gets decremented while the index (used by the transforms `Enumerator`) gets incremented. Causing to unparent only half of the original child count.  
+_Corrected version_
 ```
     while (_content.childCount > 0)
     {
@@ -30,9 +27,9 @@ __Corrected version__
     }
 ```
 
-### Using a while loop to destroy children objects
+### Using a while loop to destroy child objects
 
-Since destroying happens after the update loop has finished, the following code will result in an infinite loop.
+Since destroying actually happens after the update loop has finished, the following code causes an infinite loop.
 
 ```
     while (transform.childCount > 0)
@@ -41,7 +38,7 @@ Since destroying happens after the update loop has finished, the following code 
     }
 ```
 
-In this case the foreach loop is a proper alternative.
+Using foreach loop is a proper alternative.
 
 ```
     foreach (Transform child in transform)
