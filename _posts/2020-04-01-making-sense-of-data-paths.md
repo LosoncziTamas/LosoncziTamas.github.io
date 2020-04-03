@@ -11,15 +11,16 @@ tags:
  - file
 ---
 
-According to the Unity docs, there are several data paths available. It may not be obvious which one should be used under what circumstance. So, here is a summary of them with some use cases.
+According to the Unity docs, there are several data paths available that can be used for storing or loading data on demand. It may not be obvious which one should be used under what circumstance. So, here is a summary of them with some use cases.
 
-__Application.dataPath__ - Returns the path to the game data folder on the target platform. For example, in the editor, it returns the path to the _Assets_ folder and on Android, it points to the APK. It can be useful when you are developing a custom editor script. On the other hand, I would not rely on it for general cases such as loading/storing gameplay data.
+__Application.dataPath__ - Returns the path to the game data folder on the target platform. For example, in the editor, it returns the path to the _Assets_ folder and on Android, it points to the APK. It can be useful when you are developing a custom editor script or when you need a direct path to the game on your platform (ex.: you want to list the files your build has). On the other hand, I would not rely on it for general cases such as loading/storing gameplay data.
 
-__Application.persistentDataPath__ - Returns a path where you can store runtime data (ex.: configs, session, cache). Files stored at `persistentDataPath` are not erased by app updates, however, they are public, and the user is free to delete them. It is the standard location for storing caches.
+__Application.persistentDataPath__ - Returns a path where you can store runtime data (ex.: configs, session, cache). Files stored at `persistentDataPath` are public, and the user is free to delete them, however, they are not affected by app updates. It is the standard location for storing caches.
 
-__Application.temporaryCachePath__ - Similarly to `persistentDataPath`, `temporaryCachePath` is intended to be used for storing runtime temporary data. Due to it's naming and the lack of documentation (no info about when they are cleared), I would only use it for storing recoverable/non-critical data such as logs/image caches.
+__Application.temporaryCachePath__ - Similarly to `persistentDataPath`, `temporaryCachePath` is intended to be used for storing runtime temporary data. Due to it's naming and the lack of documentation (no info about when/how they are cleared), I would only use it for storing recoverable/non-critical data such as logs/image caches.
 
-__Application.streamingAssetsPath__ - Streaming assets are files located at the `StreamingAssets` folder of the project. These files can be loaded at runtime by using the `streamingAssetsPath` property. It should be only used for retrieving data (hence the name "streaming") and not for saving them. Additionally, on WEBGL and Android, it's not a file path but a URI, so on these platforms, you'll need to implement a custom functionality to resolve the files. For example, on Android it's bundled in the APK, which means first you'll need to decompress the file and then load it to the memory or write it to the file system for later use.
+__Application.streamingAssetsPath__ - Streaming assets are files located at the _StreamingAssets_ folder of the project. These files can be loaded at runtime by using the `streamingAssetsPath` property. It should be only used for retrieving data (hence the name "streaming") and not for saving them. Additionally, on WEBGL and Android, it's not a file path but a URI, so on these platforms, you'll need to implement a custom functionality to resolve the files. For example, on Android it's bundled in the APK, which means first you'll need to decompress the file and then load it to the memory or write it to the file system for later use.   
+Use this approach if you want to load assets on-demand without treating them as a _Resource_. Files stored at this location are cleared on app updates.
 
 ---
 
