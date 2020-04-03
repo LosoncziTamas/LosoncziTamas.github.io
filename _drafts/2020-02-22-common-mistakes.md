@@ -9,16 +9,17 @@ tags:
  - ui
 ---
 
-__Using a foreach loop to unparent child game objects__  
-_Faulty version_
+### #1: Using a foreach loop to unparent child game objects   
+   
 ```
     foreach (Transform child in _content.transform)
     {             
         _pool.ReturnItem(child.GetComponent<LevelSelectorItem>());
     }
 ```
-Here `_pool.ReturnItem()` internally invokes a `SetParent` to change the parent transform. On each iteration, the value of the parent `childCount` gets decremented while the index (used by the transforms `Enumerator`) gets incremented. Causing to unparent only half of the original child count.  
-_Corrected version_
+Here `_pool.ReturnItem()` internally invokes a `SetParent` to change the parent transform. On each iteration, the value of the parent `childCount` gets decremented while the index (used by the transforms `Enumerator`) gets incremented. Causing to unparent only half of the original child count.   
+
+#### Corrected version
 ```
     while (_content.childCount > 0)
     {
@@ -27,9 +28,7 @@ _Corrected version_
     }
 ```
 
-### Using a while loop to destroy child objects
-
-Since destroying actually happens after the update loop has finished, the following code causes an infinite loop.
+### #2: Using a while loop to destroy child objects
 
 ```
     while (transform.childCount > 0)
@@ -37,8 +36,7 @@ Since destroying actually happens after the update loop has finished, the follow
         Destroy(transform.GetChild(0).gameObject);
     }
 ```
-
-Using foreach loop is a proper alternative.
+Since destroying actually happens after the update loop has finished, the previous code runs infinitely. Using foreach loop is a proper alternative.
 
 ```
     foreach (Transform child in transform)
@@ -46,35 +44,7 @@ Using foreach loop is a proper alternative.
         Destroy(child.gameObject);
     }
 ```
-
-### Initializing states at inproper events functions.
-
-
-### Destroying a script component instead of the game object.
-
-
-### Querying components on inactive game objects with GetComponentInChildern.
-
-
-### Modifying the game object's position direcly
-
-You cannot modify the position of the GameObject directly (by calling transform.position), you'll either have to use the Translate method on the Transform or assign/set a new vector to transform.position.
-
-__This doesn't work__
-```
-    var currPos = transform.position;
-    transform.position.Set(currPos.x + _direction.x * _speed, currPos.y + _direction.y * _speed, currPos.z);
-```
-
-`Vector3` is a C# struct which means when you are assigning an instance of it to a variable, or pass it around, you are using a copy not a reference.
-
-__This does__
-```
-    var currPos = transform.position;
-    transform.position = new Vector3(currPos.x + _direction.x * _speed, currPos.y + _direction.y * _speed, currPos.z);
-```
-
-### Failing to unsubscribe from an event
+### #3: Failing to unsubscribe from an event
 
 This could easily cause leaks and `MissingReferenceException` in your app. Until you unsubscribe from an event, the delegate underlying the event in the publishing object has a reference to the subscriber's event handler. Hence preventing the GC to delete the subscriber object. 
 
@@ -140,3 +110,32 @@ When `LifeCounterUI` is no longer active or even the corresponding game object i
         }
     }
 ```
+
+
+### Initializing states at inproper events functions.
+
+
+### Destroying a script component instead of the game object.
+
+
+### Querying components on inactive game objects with GetComponentInChildern.
+
+
+### Modifying the game object's position direcly
+
+You cannot modify the position of the GameObject directly (by calling transform.position), you'll either have to use the Translate method on the Transform or assign/set a new vector to transform.position.
+
+__This doesn't work__
+```
+    var currPos = transform.position;
+    transform.position.Set(currPos.x + _direction.x * _speed, currPos.y + _direction.y * _speed, currPos.z);
+```
+
+`Vector3` is a C# struct which means when you are assigning an instance of it to a variable, or pass it around, you are using a copy not a reference.
+
+__This does__
+```
+    var currPos = transform.position;
+    transform.position = new Vector3(currPos.x + _direction.x * _speed, currPos.y + _direction.y * _speed, currPos.z);
+```
+
