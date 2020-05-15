@@ -36,8 +36,16 @@ __A__: First, you'll need to detect the position of the tap in screen space: `Ge
 ```
 You can get a reference to the transform of the object via the `RaycastHit` structure which then can be used to indicate the selection (ex.: scaling up).
 
+### IO
+
+- What is the difference between Resources and AssetBundles?
+
+
 ### Rendering
 ---
+
+Q: What's the most efficient way to draw multiple objects with the same material, but using slightly different properties?
+A: MaterialPropertyBlock
 
 __Q__: What are the 4 coordinate systems in Unity? What are the differences between them?  
 __A__: Screen coordinates, GUI coordinates, Viewport coordinates and World coordinates.
