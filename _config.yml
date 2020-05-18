@@ -1,7 +1,7 @@
 # Site settings
 title: "Tamás Losonczi's personal site"
 description: "Personal site for sharing knowledge."
-title_description: "I’m a programmer from Budapest. See my projects <a href=\"../projects\">here</a>."
+title_description: "I’m a programmer from Budapest. See some of my projects <a href=\"../projects\">here</a>."
 title_image: "./images/avatar.jpg"
 # google_analytics: "UA-20365477-4"
 disqus_account: tamslosonczi
